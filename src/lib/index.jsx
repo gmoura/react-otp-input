@@ -85,8 +85,6 @@ class SingleOtpInput extends PureComponent<*> {
       ...rest
     } = this.props;
 
-    const numValueLimits = isInputNum ? { min: 0, max: 9 } : {};
-
     return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
         <input
@@ -103,8 +101,7 @@ class SingleOtpInput extends PureComponent<*> {
             isDisabled && disabledStyle,
             hasErrored && errorStyle
           )}
-          type={isInputNum ? 'number' : 'tel'}
-          {...numValueLimits}
+          type="tel"
           maxLength="1"
           ref={input => {
             this.input = input;
@@ -195,6 +192,10 @@ class OtpInput extends Component<Props, State> {
   };
 
   handleOnChange = (e: Object) => {
+    if(this.props.isInputNum && isNaN(Number(e.target.value)) ) {
+      this.focusInput(this.state.activeInput)
+      return false;
+    }
     this.changeCodeAtFocus(e.target.value);
     this.focusNextInput();
   };
