@@ -134,16 +134,15 @@ class OtpInput extends Component<Props, State> {
 
   // Helper to return OTP from input
   handleOtpChange = (otp: string[]) => {
-    const { onChange, isInputNum } = this.props;
+    const { onChange } = this.props;
     const otpValue = otp.join('');
-    onChange(isInputNum ? Number(otpValue) : otpValue);
+    onChange(otpValue);
   };
 
   // Focus on input by index
   focusInput = (input: number) => {
     const { numInputs } = this.props;
     const activeInput = Math.max(Math.min(numInputs - 1, input), 0);
-
     this.setState({ activeInput });
   };
 
@@ -171,15 +170,23 @@ class OtpInput extends Component<Props, State> {
   // Handle pasted OTP
   handleOnPaste = (e: Object) => {
     e.preventDefault();
-    const { numInputs } = this.props;
+    const { numInputs, isInputNum } = this.props;
     const { activeInput } = this.state;
     const otp = this.getOtpValue();
-
+    let hasString = false;
+    
     // Get pastedData in an array of max size (num of inputs - current position)
     const pastedData = e.clipboardData
       .getData('text/plain')
       .slice(0, numInputs - activeInput)
       .split('');
+    
+    //Prevent to inset string, when isInputNum is true
+    pastedData.forEach(value => {
+      if(isInputNum && isNaN(Number(value))) hasString = true
+    })
+
+    if(isInputNum && hasString) return false;
 
     // Paste data from focused input onwards
     for (let pos = 0; pos < numInputs; ++pos) {
