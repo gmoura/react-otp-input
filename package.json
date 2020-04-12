@@ -1,7 +1,7 @@
 {
-  "name": "react-otp-login",
-  "version": "1.0.3",
-  "description": "A fully customizable, one-time password input component for the web built with React",
+  "name": "react-pinco",
+  "version": "1.1.3",
+  "description": "A fully customizable, pincode password input component for the web built with React",
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently \"npm run build:watch\" \"npm run demo\"",
@@ -60,13 +60,13 @@
   },
   "author": "Ajay NS <ajay.ns@outlook.com>",
   "license": "MIT",
-  "homepage": "https://github.com/gmoura/react-otp-input",
+  "homepage": "https://github.com/gmoura/react-pinco",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gmoura/react-otp-input"
+    "url": "https://github.com/gmoura/react-pinco"
   },
   "bugs": {
-    "url": "https://github.com/gmoura/react-otp-input/issues"
+    "url": "https://github.com/gmoura/react-pinco/issues"
   },
   "dependencies": {}
 }

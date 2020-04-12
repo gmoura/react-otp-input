@@ -44,9 +44,9 @@ class Demo extends Component {
     return (
       <div className="container">
         <div className="side-bar">
-          <a href="https://github.com/ajayns/react-otp-input" target="_blank">
+          <a href="https://github.com/gmoura/react-pinco" target="_blank">
             <div className="side-bar__segment side-bar__segment--header">
-              <h2>react-otp-input</h2>
+              <h2>react-pinco</h2>
             </div>
           </a>
           <div className="side-bar__segment">
@@ -125,7 +125,7 @@ class Demo extends Component {
             </label>
           </div>
           <div className="side-bar__segment side-bar__segment--bottom">
-            <a href="https://github.com/ajayns/react-otp-input">
+            <a href="https://github.com/gmoura/react-pinco">
               Documentation and Source
             </a>
           </div>
