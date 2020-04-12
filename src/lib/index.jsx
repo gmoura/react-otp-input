@@ -129,8 +129,14 @@ class OtpInput extends Component<Props, State> {
     activeInput: 0,
   };
 
-  getOtpValue = () =>
-    this.props.value ? this.props.value.toString().split('') : [];
+  getOtpValue = () => {
+    if(this.props.value) {
+      const splitedValue = this.props.value.toString().split('');
+      return splitedValue.map(value => value === '*' ? '' : value)
+    }
+
+    return []
+  }
 
   // Helper to return OTP from input
   handleOtpChange = (otp: string[]) => {
@@ -181,7 +187,7 @@ class OtpInput extends Component<Props, State> {
       .slice(0, numInputs - activeInput)
       .split('');
     
-    //Prevent to inset string, when isInputNum is true
+    //Prevent to insert string, when isInputNum is true
     pastedData.forEach(value => {
       if(isInputNum && isNaN(Number(value))) hasString = true
     })
@@ -204,12 +210,18 @@ class OtpInput extends Component<Props, State> {
       return false;
     }
     this.changeCodeAtFocus(e.target.value);
+    
+    // fix backspace on android chrome
+    if(e.target.value.length === 0) {
+      this.changeCodeAtFocus('*');
+      return false
+    }
     this.focusNextInput();
   };
 
   // Handle cases of backspace, delete, left arrow, right arrow, space
   handleOnKeyDown = (e: Object) => {
-    if (e.keyCode === BACKSPACE || e.key === 'Backspace') {
+    if ((e.keyCode === BACKSPACE || e.key === 'Backspace') && e.target.value.length === 0) {
       e.preventDefault();
       this.changeCodeAtFocus('');
       this.focusPrevInput();
