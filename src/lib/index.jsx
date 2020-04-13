@@ -101,7 +101,7 @@ class SingleOtpInput extends PureComponent<*> {
             isDisabled && disabledStyle,
             hasErrored && errorStyle
           )}
-          type="tel"
+          type={isInputNum ? 'tel' : 'text'}
           maxLength="1"
           ref={input => {
             this.input = input;
@@ -209,13 +209,13 @@ class OtpInput extends Component<Props, State> {
       this.focusInput(this.state.activeInput)
       return false;
     }
-    this.changeCodeAtFocus(e.target.value);
-    
     // fix backspace on android chrome
     if(e.target.value.length === 0) {
       this.changeCodeAtFocus('*');
       return false
     }
+
+    this.changeCodeAtFocus(e.target.value);
     this.focusNextInput();
   };
 
