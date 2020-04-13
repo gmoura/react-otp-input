@@ -2,7 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/react-pinco.svg)](https://badge.fury.io/js/react-pinco) [![npm](https://img.shields.io/npm/dw/react-pinco.svg?logo=npm)](https://www.npmjs.com/package/react-pinco) 
 
-A fully customizable, one-time password input component for the web built with React.
+A fully customizable, pincode password input component for the web built with React.
 
 
 ## Installation
