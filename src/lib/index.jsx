@@ -210,7 +210,7 @@ class OtpInput extends Component<Props, State> {
       return false;
     }
     // fix backspace on android chrome
-    if(e.target.value.length === 0) {
+    if(e.target.value.length === 0 || e.target.value == " ") {
       this.changeCodeAtFocus('*');
       return false
     }
@@ -234,13 +234,14 @@ class OtpInput extends Component<Props, State> {
     } else if (e.keyCode === RIGHT_ARROW || e.key === 'ArrowRight') {
       e.preventDefault();
       this.focusNextInput();
-    } else if (e.keyCode === SPACEBAR || e.key === ' ' || e.key === 'Spacebar') {
+    } else if (e.keyCode === SPACEBAR || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Unidentified') {
       e.preventDefault();
     }
   };
 
   checkLength = (e: Object) => {
-    if (e.target.value.length > 1) {
+    const value = e.target.value.trim()
+    if (value.length > 1) {
       e.preventDefault();
       this.focusNextInput();
     }
