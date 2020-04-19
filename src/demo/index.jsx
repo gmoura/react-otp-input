@@ -7,7 +7,7 @@ class Demo extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      otp: '',
+      otp: [],
       numInputs: 4,
       separator: '-',
       isDisabled: false,
@@ -25,7 +25,7 @@ class Demo extends Component {
   };
 
   clearOtp = () => {
-    this.setState({ otp: '' });
+    this.setState({ otp: [] });
   };
 
   handleCheck = e => {
@@ -83,7 +83,7 @@ class Demo extends Component {
                 maxLength={numInputs}
                 name="otp"
                 type="text"
-                value={otp}
+                value={otp.join('')}
                 onChange={this.handleChange}
               />
             </label>
@@ -159,7 +159,7 @@ class Demo extends Component {
                 </button>
                 <button
                   className="btn margin-top--large"
-                  disabled={otp.length < numInputs}
+                  disabled={otp.includes('')}
                 >
                   Get OTP
                 </button>

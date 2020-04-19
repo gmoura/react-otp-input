@@ -21,7 +21,7 @@ import OtpInput from 'react-pinco';
 
 export default class App extends Component {
   state = {
-    otp: '',
+    otp: [],
   };
 
   handleChange = otp => this.setState({ otp });
@@ -67,8 +67,8 @@ export default class App extends Component {
   <tr>
     <td>value</td>
     <td>string / number</td>
-    <td>true</td>
-    <td>''</td>
+    <td>array</td>
+    <td>[]</td>
     <td>The value of the OTP passed into the component.</td>
   </tr>
   <tr>
