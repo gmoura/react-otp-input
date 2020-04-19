@@ -13,6 +13,7 @@ class Demo extends Component {
       isDisabled: false,
       hasErrored: false,
       isInputNum: false,
+      clear: false,
     };
   }
 
@@ -25,7 +26,10 @@ class Demo extends Component {
   };
 
   clearOtp = () => {
-    this.setState({ otp: [] });
+    this.setState({ 
+      clear: true,
+      otp: []
+    });
   };
 
   handleCheck = e => {
@@ -38,9 +42,15 @@ class Demo extends Component {
     alert(this.state.otp);
   };
 
-  render() {
-    const { otp, numInputs, separator, isDisabled, hasErrored, isInputNum } = this.state;
+  handlekeyDown = e => {
+    this.setState({
+      clear: false
+    })
+  }
 
+  render() {
+    const { otp, numInputs, separator, isDisabled, hasErrored, isInputNum, clear } = this.state;
+    console.log(otp)
     return (
       <div className="container">
         <div className="side-bar">
@@ -134,7 +144,7 @@ class Demo extends Component {
           <div className="card">
             <form onSubmit={this.handleSubmit}>
               <p>Enter verification code</p>
-              <div className="margin-top--small">
+              <div className="margin-top--small" onKeyDown={this.handlekeyDown}>
                 <OtpInput
                   inputStyle="inputStyle"
                   numInputs={numInputs}
@@ -145,7 +155,7 @@ class Demo extends Component {
                   separator={<span>{separator}</span>}
                   isInputNum={isInputNum}
                   shouldAutoFocus
-                  value={otp}
+                  clear={clear}
                 />
               </div>
               <div className="btn-row">
@@ -159,7 +169,7 @@ class Demo extends Component {
                 </button>
                 <button
                   className="btn margin-top--large"
-                  disabled={otp.includes('')}
+                  disabled={otp.includes('') || otp.length < numInputs}
                 >
                   Get OTP
                 </button>

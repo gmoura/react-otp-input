@@ -21,6 +21,7 @@ type Props = {
   errorStyle?: Object,
   shouldAutoFocus?: boolean,
   isInputNum?: boolean,
+  clear?: Boolean,
   value?: string,
 };
 
@@ -122,12 +123,22 @@ class OtpInput extends Component<Props, State> {
     onChange:(callback) => callback(this.state.otp),
     isDisabled: false,
     shouldAutoFocus: false,
+    clear: false
   };
 
   state = {
     activeInput: 0,
     otp : [...Array(this.props.numInputs)].map((_,i) => "")
   };
+
+  componentWillReceiveProps(){
+    const { clear, numInputs } = this.props;
+    if(clear) {
+      this.setState({
+        otp: [...Array(numInputs.numInputs)].map((_,i) => "")
+      })
+    }
+  }
 
   // Focus on input by index
   focusInput = (input: number) => {
@@ -275,6 +286,7 @@ class OtpInput extends Component<Props, State> {
       errorStyle,
       shouldAutoFocus,
       isInputNum,
+      clear
     } = this.props;
     const inputs = [];
 
@@ -283,7 +295,7 @@ class OtpInput extends Component<Props, State> {
         <SingleOtpInput
           key={i}
           focus={activeInput === i}
-          value={ otp[i]}
+          value={ clear ? '' : otp[i]}
           onChange={this.handleOnChange}
           onKeyDown={this.handleOnKeyDown}
           onInput={this.checkLength}
