@@ -119,30 +119,14 @@ class SingleOtpInput extends PureComponent<*> {
 class OtpInput extends Component<Props, State> {
   static defaultProps = {
     numInputs: 4,
-    onChange: (otp: number): void => console.log(otp),
+    onChange:(callback) => callback(this.state.otp),
     isDisabled: false,
     shouldAutoFocus: false,
-    value: '',
   };
 
   state = {
     activeInput: 0,
-  };
-
-  getOtpValue = () => {
-    if(this.props.value) {
-      const splitedValue = this.props.value.toString().split('');
-      return splitedValue.map(value => value === '*' ? '' : value)
-    }
-
-    return []
-  }
-
-  // Helper to return OTP from input
-  handleOtpChange = (otp: string[]) => {
-    const { onChange } = this.props;
-    const otpValue = otp.join('');
-    onChange(otpValue);
+    otp : [...Array(this.props.numInputs)].map((_,i) => "")
   };
 
   // Focus on input by index
@@ -164,22 +148,13 @@ class OtpInput extends Component<Props, State> {
     this.focusInput(activeInput - 1);
   };
 
-  // Change OTP value at focused input
-  changeCodeAtFocus = (value: string) => {
-    const { activeInput } = this.state;
-    const otp = this.getOtpValue();
-    otp[activeInput] = value[0];
-
-    this.handleOtpChange(otp);
-  };
-
   // Handle pasted OTP
   handleOnPaste = (e: Object) => {
     e.preventDefault();
-    const { numInputs, isInputNum } = this.props;
-    const { activeInput } = this.state;
-    const otp = this.getOtpValue();
+    const { numInputs, isInputNum, onChange } = this.props;
+    const { activeInput, otp } = this.state;
     let hasString = false;
+    const newOtp = []
     
     // Get pastedData in an array of max size (num of inputs - current position)
     const pastedData = e.clipboardData
@@ -197,45 +172,85 @@ class OtpInput extends Component<Props, State> {
     // Paste data from focused input onwards
     for (let pos = 0; pos < numInputs; ++pos) {
       if (pos >= activeInput && pastedData.length > 0) {
-        otp[pos] = pastedData.shift();
+        newOtp[pos] = pastedData.shift();
       }
     }
 
-    this.handleOtpChange(otp);
+    this.setState({
+      otp: newOtp
+    });
+
+    this.focusInput(numInputs - 1 )
+
+    //Workaround to nofify parent element with the otp value
+    setTimeout(() => {
+      onChange(otp)
+    }, 2)
   };
 
   handleOnChange = (e: Object) => {
-    if(this.props.isInputNum && isNaN(Number(e.target.value)) ) {
-      this.focusInput(this.state.activeInput)
+    const { activeInput, otp } = this.state;
+    const { isInputNum, onChange} = this.props;
+    const newOtp = otp;
+    
+    if(isInputNum && isNaN(Number(e.target.value)) ) {
+      this.focusInput(activeInput)
       return false;
     }
     // fix backspace on android chrome
-    if(e.target.value.length === 0 || e.target.value == " ") {
-      this.changeCodeAtFocus('*');
+    if(e.target.value.length === 0 || e.target.value == " ") { 
       return false
     }
+    
+    newOtp[activeInput] = e.target.value;
+    this.setState({
+      otp: newOtp
+    })
 
-    this.changeCodeAtFocus(e.target.value);
     this.focusNextInput();
+    onChange(otp)
   };
 
   // Handle cases of backspace, delete, left arrow, right arrow, space
   handleOnKeyDown = (e: Object) => {
-    if ((e.keyCode === BACKSPACE || e.key === 'Backspace') && e.target.value.length === 0) {
+    const { otp, activeInput } = this.state;
+    const { onChange } = this.props;
+    const newOtp = otp;
+    if((e.keyCode === BACKSPACE || e.key === 'Backspace') && e.target.value.length === 0) {
       e.preventDefault();
-      this.changeCodeAtFocus('');
       this.focusPrevInput();
+    } else if ((e.keyCode === BACKSPACE || e.key === 'Backspace')) {
+      e.preventDefault();
+      newOtp[activeInput] = '';
+      this.setState({
+        otp: newOtp
+      })
+      onChange(otp)
     } else if (e.keyCode === DELETE || e.key === 'Delete') {
       e.preventDefault();
-      this.changeCodeAtFocus('');
+      newOtp[activeInput] = '';
+      this.setState({
+        otp: newOtp
+      })
+      onChange(otp)
     } else if (e.keyCode === LEFT_ARROW || e.key === 'ArrowLeft') {
       e.preventDefault();
       this.focusPrevInput();
     } else if (e.keyCode === RIGHT_ARROW || e.key === 'ArrowRight') {
       e.preventDefault();
       this.focusNextInput();
-    } else if (e.keyCode === SPACEBAR || e.key === ' ' || e.key === 'Spacebar' || e.key === 'Unidentified') {
+    } else if (e.keyCode === SPACEBAR || e.key === ' ' || e.key === 'Spacebar') {
       e.preventDefault();
+    }
+    // Workaround on Android browser
+    // Input on Android: 229 Unidentified 
+    else if (e.key === 'Unidentified') {
+      e.preventDefault();
+      newOtp[activeInput] = '';
+      this.setState({
+        otp: newOtp
+      })
+      onChange(otp)
     }
   };
 
@@ -248,7 +263,7 @@ class OtpInput extends Component<Props, State> {
   };
 
   renderInputs = () => {
-    const { activeInput } = this.state;
+    const { activeInput, otp} = this.state;
     const {
       numInputs,
       inputStyle,
@@ -261,7 +276,6 @@ class OtpInput extends Component<Props, State> {
       shouldAutoFocus,
       isInputNum,
     } = this.props;
-    const otp = this.getOtpValue();
     const inputs = [];
 
     for (let i = 0; i < numInputs; i++) {
@@ -269,7 +283,7 @@ class OtpInput extends Component<Props, State> {
         <SingleOtpInput
           key={i}
           focus={activeInput === i}
-          value={otp && otp[i]}
+          value={ otp[i]}
           onChange={this.handleOnChange}
           onKeyDown={this.handleOnKeyDown}
           onInput={this.checkLength}
