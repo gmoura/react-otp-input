@@ -39,7 +39,7 @@ class Demo extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    alert(this.state.otp);
+    alert(this.state.otp.join(''));
   };
 
   handlekeyDown = e => {
