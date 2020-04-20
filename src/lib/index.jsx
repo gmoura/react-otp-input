@@ -23,11 +23,12 @@ type Props = {
   isInputNum?: boolean,
   clear?: Boolean,
   value?: string,
+  initialValue?: string[]
 };
 
 type State = {
   activeInput: number,
-  otp: string[],
+  pincode: string[],
 };
 
 // Doesn't really check if it's a style Object
@@ -36,7 +37,7 @@ type State = {
 // TODO: Better implementation
 const isStyleObject = obj => typeof obj === 'object';
 
-class SingleOtpInput extends PureComponent<*> {
+class SinglePincodeInput extends PureComponent<*> {
   input: ?HTMLInputElement;
 
   // Focus on first render
@@ -117,10 +118,10 @@ class SingleOtpInput extends PureComponent<*> {
   }
 }
 
-class OtpInput extends Component<Props, State> {
+class PincodeInput extends Component<Props, State> {
   static defaultProps = {
     numInputs: 4,
-    onChange:(callback) => callback(this.state.otp),
+    onChange:(callback) => callback(this.state.pincode),
     isDisabled: false,
     shouldAutoFocus: false,
     clear: false
@@ -128,14 +129,23 @@ class OtpInput extends Component<Props, State> {
 
   state = {
     activeInput: 0,
-    otp : [...Array(this.props.numInputs)].map((_,i) => "")
+    pincode : [...Array(this.props.numInputs)].map((_,i) => "")
   };
+
+  componentDidMount(){
+    const { initialValue } = this.props;
+    if(initialValue) {
+      this.setState({
+        pincode: initialValue
+      })
+    }
+  }
 
   componentWillReceiveProps(){
     const { clear, numInputs } = this.props;
     if(clear) {
       this.setState({
-        otp: [...Array(numInputs.numInputs)].map((_,i) => "")
+        pincode: [...Array(numInputs.numInputs)].map((_,i) => "")
       })
     }
   }
@@ -159,13 +169,13 @@ class OtpInput extends Component<Props, State> {
     this.focusInput(activeInput - 1);
   };
 
-  // Handle pasted OTP
+  // Handle pasted Pincode
   handleOnPaste = (e: Object) => {
     e.preventDefault();
     const { numInputs, isInputNum, onChange } = this.props;
-    const { activeInput, otp } = this.state;
+    const { activeInput, pincode } = this.state;
     let hasString = false;
-    const newOtp = []
+    const newPiconde = []
     
     // Get pastedData in an array of max size (num of inputs - current position)
     const pastedData = e.clipboardData
@@ -183,26 +193,26 @@ class OtpInput extends Component<Props, State> {
     // Paste data from focused input onwards
     for (let pos = 0; pos < numInputs; ++pos) {
       if (pos >= activeInput && pastedData.length > 0) {
-        newOtp[pos] = pastedData.shift();
+        newPiconde[pos] = pastedData.shift();
       }
     }
 
     this.setState({
-      otp: newOtp
+      pincode: newPiconde
     });
 
     this.focusInput(numInputs - 1 )
 
-    //Workaround to nofify parent element with the otp value
+    //Workaround to nofify parent element with the pincode value
     setTimeout(() => {
-      onChange(otp)
+      onChange(pincode)
     }, 2)
   };
 
   handleOnChange = (e: Object) => {
-    const { activeInput, otp } = this.state;
+    const { activeInput, pincode } = this.state;
     const { isInputNum, onChange} = this.props;
-    const newOtp = otp;
+    const newPiconde = pincode;
     
     if(isInputNum && isNaN(Number(e.target.value)) ) {
       this.focusInput(activeInput)
@@ -213,37 +223,37 @@ class OtpInput extends Component<Props, State> {
       return false
     }
     
-    newOtp[activeInput] = e.target.value;
+    newPiconde[activeInput] = e.target.value;
     this.setState({
-      otp: newOtp
+      pincode: newPiconde
     })
 
     this.focusNextInput();
-    onChange(otp)
+    onChange(pincode)
   };
 
   // Handle cases of backspace, delete, left arrow, right arrow, space
   handleOnKeyDown = (e: Object) => {
-    const { otp, activeInput } = this.state;
+    const { pincode, activeInput } = this.state;
     const { onChange } = this.props;
-    const newOtp = otp;
+    const newPiconde = pincode;
     if((e.keyCode === BACKSPACE || e.key === 'Backspace') && e.target.value.length === 0) {
       e.preventDefault();
       this.focusPrevInput();
     } else if ((e.keyCode === BACKSPACE || e.key === 'Backspace')) {
       e.preventDefault();
-      newOtp[activeInput] = '';
+      newPiconde[activeInput] = '';
       this.setState({
-        otp: newOtp
+        pincode: newPiconde
       })
-      onChange(otp)
+      onChange(pincode)
     } else if (e.keyCode === DELETE || e.key === 'Delete') {
       e.preventDefault();
-      newOtp[activeInput] = '';
+      newPiconde[activeInput] = '';
       this.setState({
-        otp: newOtp
+        pincode: newPiconde
       })
-      onChange(otp)
+      onChange(pincode)
     } else if (e.keyCode === LEFT_ARROW || e.key === 'ArrowLeft') {
       e.preventDefault();
       this.focusPrevInput();
@@ -257,11 +267,11 @@ class OtpInput extends Component<Props, State> {
     // Input on Android: 229 Unidentified 
     else if (e.key === 'Unidentified') {
       e.preventDefault();
-      newOtp[activeInput] = '';
+      newPiconde[activeInput] = '';
       this.setState({
-        otp: newOtp
+        pincode: newPiconde
       })
-      onChange(otp)
+      onChange(pincode)
     }
   };
 
@@ -274,7 +284,7 @@ class OtpInput extends Component<Props, State> {
   };
 
   renderInputs = () => {
-    const { activeInput, otp} = this.state;
+    const { activeInput, pincode} = this.state;
     const {
       numInputs,
       inputStyle,
@@ -286,16 +296,16 @@ class OtpInput extends Component<Props, State> {
       errorStyle,
       shouldAutoFocus,
       isInputNum,
-      clear
+      clear,
     } = this.props;
     const inputs = [];
 
     for (let i = 0; i < numInputs; i++) {
       inputs.push(
-        <SingleOtpInput
+        <SinglePincodeInput
           key={i}
           focus={activeInput === i}
-          value={ clear ? '' : otp[i]}
+          value={ clear ? '' : pincode[i]}
           onChange={this.handleOnChange}
           onKeyDown={this.handleOnKeyDown}
           onInput={this.checkLength}
@@ -339,4 +349,4 @@ class OtpInput extends Component<Props, State> {
   }
 }
 
-export default OtpInput;
+export default PincodeInput;
