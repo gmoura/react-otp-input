@@ -50,7 +50,6 @@ class Demo extends Component {
 
   render() {
     const { otp, numInputs, separator, isDisabled, hasErrored, isInputNum, clear } = this.state;
-    console.log(otp)
     return (
       <div className="container">
         <div className="side-bar">
