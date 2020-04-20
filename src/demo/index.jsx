@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import OtpInput from '../../lib';
+import PincodeInput from '../../lib';
 import './styles.css';
 
 class Demo extends Component {
@@ -145,7 +145,7 @@ class Demo extends Component {
             <form onSubmit={this.handleSubmit}>
               <p>Enter verification code</p>
               <div className="margin-top--small" onKeyDown={this.handlekeyDown}>
-                <OtpInput
+                <PincodeInput
                   inputStyle="inputStyle"
                   numInputs={numInputs}
                   isDisabled={isDisabled}

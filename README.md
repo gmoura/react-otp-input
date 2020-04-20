@@ -17,7 +17,7 @@ npm install --save react-pinco
 
 ```javascript
 import React, { Component } from 'react';
-import OtpInput from 'react-pinco';
+import PincodeInput from 'react-pinco';
 
 export default class App extends Component {
   state = {
@@ -29,7 +29,7 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <OtpInput
+        <PincodeInput
           onChange={this.handleChange}
           numInputs={6}
           separator={<span>-</span>}
@@ -55,22 +55,37 @@ export default class App extends Component {
     <td>number</td>
     <td>true</td>
     <td>4</td>
-    <td>Number of OTP inputs to be rendered.</td>
+    <td>Number of pincode inputs to be rendered.</td>
+  </tr>
+    <tr>
+    <td>value</td>
+    <td>array of string</td>
+    <td>array</td>
+    <td>[]</td>
+    <td>The value of the pincode passed into the component.</td>
+  </tr>
+  <tr>
+    <td>initialValue</td>
+    <td>array of string</td>
+    <td>false</td>
+    <td>[]</td>
+    <td>If you want to start with a initial value. Example  ['1', '2', '3', '4']</td>
+  </tr>
+  <tr>
+    <td>clear</td>
+    <td>boolean</td>
+    <td>false</td>
+    <td>false</td>
+    <td>If you want to clear pincode value</td>
   </tr>
   <tr>
     <td>onChange</td>
     <td>function</td>
     <td>true</td>
     <td>console.log</td>
-    <td>Returns OTP code typed in inputs.</td>
+    <td>Returns pincode typed in inputs.</td>
   </tr>
-  <tr>
-    <td>value</td>
-    <td>string / number</td>
-    <td>array</td>
-    <td>[]</td>
-    <td>The value of the OTP passed into the component.</td>
-  </tr>
+
   <tr>
     <td>separator</td>
     <td>component<br/></td>
