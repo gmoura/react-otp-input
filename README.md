@@ -15,6 +15,7 @@ npm install --save react-pinco
 
 #### Basic usage:
 
+
 ```javascript
 import React, { Component } from 'react';
 import PincodeInput from 'react-pinco';
