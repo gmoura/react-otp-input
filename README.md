@@ -1,6 +1,8 @@
 # react-pinco
 
-[![npm version](https://badge.fury.io/js/react-pinco.svg)](https://badge.fury.io/js/react-pinco) [![npm](https://img.shields.io/npm/dw/react-pinco.svg?logo=npm)](https://www.npmjs.com/package/react-pinco) 
+[![npm version](https://badge.fury.io/js/react-pinco.svg)](https://badge.fury.io/js/react-pinco) [![npm](https://img.shields.io/npm/dw/react-pinco.svg?logo=npm)](https://www.npmjs.com/package/react-pinco)
+[![codecov](https://codecov.io/gh/gmoura/react-pinco/branch/master/graph/badge.svg)](https://codecov.io/gh/gmoura/react-pinco)
+[![Build Status](https://travis-ci.com/gmoura/react-pinco.svg?branch=master)](https://travis-ci.com/gmoura/react-pinco)
 
 A fully customizable, pincode password input component for the web built with React.
 
@@ -14,7 +16,6 @@ npm install --save react-pinco
 ```
 
 #### Basic usage:
-
 
 ```javascript
 import React, { Component } from 'react';
