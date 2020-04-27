@@ -580,6 +580,16 @@ describe('Pinco', () => {
 
             });
 
+            wrapper.setState({
+                pincode: ['', '', '', '']
+            });
+            wrapper.setProps({
+                numInputs: 4,
+                onChange:() => {},
+                isDisabled: false,
+                shouldAutoFocus: false,
+            })
+
             counterInput.at(0).find('input[type="text"]').simulate('paste', mEvent);
             expect(counterInput.at(0).find('input[type="text"]').getDOMNode().value).toBe('1')
             expect(counterInput.at(1).find('input[type="text"]').getDOMNode().value).toBe('2')
@@ -597,6 +607,16 @@ describe('Pinco', () => {
                 expect(node.find('input[type="text"]')).toHaveLength(1)
 
             });
+
+            wrapper.setState({
+                pincode: ['', '', '', '']
+            });
+            wrapper.setProps({
+                numInputs: 4,
+                onChange:() => {},
+                isDisabled: false,
+                shouldAutoFocus: false,
+            })
 
             counterInput.at(1).find('input[type="text"]').simulate('paste', mEvent);
             expect(counterInput.at(0).find('input[type="text"]').getDOMNode().value).toBe('A')
@@ -616,6 +636,16 @@ describe('Pinco', () => {
 
             });
 
+            wrapper.setState({
+                pincode: ['', '', '', '']
+            });
+            wrapper.setProps({
+                numInputs: 4,
+                onChange:() => {},
+                isDisabled: false,
+                shouldAutoFocus: false,
+            })
+
             counterInput.at(1).find('input[type="text"]').simulate('paste', mEvent);
             expect(counterInput.at(0).find('input[type="text"]').getDOMNode().value).toBe('A')
             expect(counterInput.at(1).find('input[type="text"]').getDOMNode().value).toBe('a')
@@ -633,6 +663,16 @@ describe('Pinco', () => {
                 expect(node.find('input[type="text"]')).toHaveLength(1)
 
             });
+
+            wrapper.setState({
+                pincode: ['', '', '', '']
+            });
+            wrapper.setProps({
+                numInputs: 4,
+                onChange:() => {},
+                isDisabled: false,
+                shouldAutoFocus: false,
+            })
 
             counterInput.at(1).find('input[type="text"]').simulate('paste', mEvent);
             expect(counterInput.at(0).find('input[type="text"]').getDOMNode().value).toBe('1')
