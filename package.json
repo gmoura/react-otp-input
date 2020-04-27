@@ -89,5 +89,8 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "jest": "^25.4.0"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
