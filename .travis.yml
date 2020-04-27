@@ -1,19 +1,20 @@
 language: node_js
 install:
-  - yarn
+- yarn
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
-    - node_modules
+  - node_modules
 script:
-  - yarn test
-  - yarn report-coverage
-  - yarn build
+- yarn test
+- yarn report-coverage
+- yarn build
 deploy:
-  provider: pages
-  skip_cleanup: true
-  domain: $github_token
-  project: ./build/
-on:
-  branch: master
+  provider: npm
+  email: gmoura.nas@gmail.com
+  api_key:
+    secure: aj3QmbctdrZQMvYsPugmzMxAf+B+wtlPMA2TKzDM9PeVjYdTakeKM5v/NRdPEgajeUSn7dxR50wr5wLZCNWJQ6uUg7eZdbJwBfvo9/7szTrK6W7rXKtreKLrP6dvPwOmSvl3FpXTmZdd81OlEBeFJn2ALKMrpt68/hGRb5j1ysOsdnaVTXQ52iCkYKxZqx2eK1Hwef62Gxmd+2twE4ZTIUrx4MJ9HRLM1pH7K2pDIrvKSjCmLuKx0bTdGJJV0Z+E9zu+Mx2JTycAzC3LqH2iV3CrAGePNuXQPiiwoQPizlLg25xdUb4ILBTS8gq3FTJy7UqXtPxTMRxUOPP9fyDxsUPyvMnfZ7gaT3e34xuu/GWkCwOr+FSlBQ6moIfNnIXpAVbnr5KCLdooxgE51jU4SiboEl8Lxo1NmSOiHJDmSvkBgoC0j8CLeHCw7kjyxUlt39mh7Mtu4Ogl8LqTbzdnBFRiOnITUhhWei/ubMt8LAFC55ZQU3hlljjQ6wSKmYJP0VA8ugi1nYbvppo/ZIFPzoUiTPMzyouit10016O1xnwy95MX1+onLYgs8BPo46On9Tgq7PxWFv+pP58V4Y1ZzgGgrIQYmCXIo5ZSP+rHRiJw3Vo/UXIvJcJx4HDpZG7NIhuzYqO3KTDD8UdzIN8qdFIy5hysUxdqGQT3wHMxDFw=
+  on:
+    tags: next
+    repo: gmoura/react-pinco
