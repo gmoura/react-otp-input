@@ -35,9 +35,9 @@ type State = {
 // Basic implementation to check if it's not a string
 // of classNames and is an Object
 // TODO: Better implementation
-const isStyleObject = obj => typeof obj === 'object';
+export const isStyleObject = obj => typeof obj === 'object';
 
-class SinglePincodeInput extends PureComponent<*> {
+export class SinglePincodeInput extends PureComponent<*> {
   input: ?HTMLInputElement;
 
   // Focus on first render
@@ -81,10 +81,14 @@ class SinglePincodeInput extends PureComponent<*> {
       errorStyle,
       focusStyle,
       disabledStyle,
-      shouldAutoFocus,
       isInputNum,
       value,
-      ...rest
+      onChange,
+      onKeyDown,
+      onInput,
+      onPaste,
+      onFocus,
+      onBlur
     } = this.props;
 
     return (
@@ -110,7 +114,12 @@ class SinglePincodeInput extends PureComponent<*> {
           }}
           disabled={isDisabled}
           value={value ? value : ''}
-          {...rest}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          onInput={onInput}
+          onPaste={onPaste}
+          onFocus={onFocus}
+          onBlur={onBlur}
         />
         {!isLastChild && separator}
       </div>
@@ -182,7 +191,7 @@ class PincodeInput extends Component<Props, State> {
       .getData('text/plain')
       .slice(0, numInputs - activeInput)
       .split('');
-    
+
     //Prevent to insert string, when isInputNum is true
     pastedData.forEach(value => {
       if(isInputNum && isNaN(Number(value))) hasString = true

@@ -1,0 +1,505 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pinco Single input Input Number 1 digit 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Number Disabled 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={true}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "yellow",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Number Empty 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value=""
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Number Has error 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "write",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Number No error 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Number Not allow 2 digits 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="10"
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Number With focus 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "blue",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Number With separator 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Text 1 digit 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Text Disabled 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={true}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "yellow",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="text"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Text Empty 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value=""
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Text Has error 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "write",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="text"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Text No error 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="text"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Text Not allow 2 digits 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="10"
+  />
+  -
+</div>
+`;
+
+exports[`Pinco Single input Input Text With focus 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "blue",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="text"
+    value="1"
+  />
+</div>
+`;
+
+exports[`Pinco Single input Input Text With separator 1`] = `
+<div
+  style={
+    Object {
+      "alignItems": "center",
+      "display": "flex",
+    }
+  }
+>
+  <input
+    className=""
+    disabled={false}
+    maxLength="1"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onInput={[Function]}
+    onKeyDown={[Function]}
+    onPaste={[Function]}
+    style={
+      Object {
+        "color": "red",
+        "textAlign": "center",
+        "width": "1em",
+      }
+    }
+    type="tel"
+    value="1"
+  />
+  -
+</div>
+`;
