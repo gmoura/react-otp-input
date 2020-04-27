@@ -1,6 +1,6 @@
 {
   "name": "react-pinco",
-  "version": "2.2.6",
+  "version": "2.2.7",
   "description": "A fully customizable, pincode password input component for the web built with React",
   "main": "lib/index.js",
   "scripts": {

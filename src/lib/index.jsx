@@ -328,7 +328,9 @@ class PincodeInput extends Component<Props, State> {
     return inputs;
   };
 
+
   render() {
+    console.log('1')
     const { containerStyle } = this.props;
 
     return (
