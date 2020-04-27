@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "dev": "concurrently \"npm run build:watch\" \"npm run demo\"",
-    "build": "babel src/lib -d lib",
+    "build": "babel src/lib/index.jsx -d lib",
     "build:watch": "babel src/lib -w -d lib",
     "demo": "webpack-dev-server --mode development",
     "demo:prod": "webpack --mode production",
@@ -17,7 +17,7 @@
     "deploy": "gh-pages -d demo",
     "docz:dev": "docz dev",
     "docz:build": "docz build",
-    "test": "./node_modules/jest/bin/jest.js --config ./jest.config.json",
+    "test": "./node_modules/jest/bin/jest.js --config ./jest.config.json --silent",
     "test:watch": "npm run test -- --watch",
     "report-coverage": "yarn test --coverage"
   },
