@@ -182,16 +182,14 @@ class PincodeInput extends Component<Props, State> {
   handleOnPaste = (e: Object) => {
     e.preventDefault();
     const { numInputs, isInputNum, onChange } = this.props;
-    const { activeInput, pincode } = this.state;
     let hasString = false;
-    const newPiconde = []
     
     // Get pastedData in an array of max size (num of inputs - current position)
     const pastedData = e.clipboardData
       .getData('text/plain')
-      .slice(0, numInputs - activeInput)
-      .split('');
-
+      .split('')
+      .slice(0, numInputs);
+    
     //Prevent to insert string, when isInputNum is true
     pastedData.forEach(value => {
       if(isInputNum && isNaN(Number(value))) hasString = true
@@ -199,23 +197,12 @@ class PincodeInput extends Component<Props, State> {
 
     if(isInputNum && hasString) return false;
 
-    // Paste data from focused input onwards
-    for (let pos = 0; pos < numInputs; ++pos) {
-      if (pos >= activeInput && pastedData.length > 0) {
-        newPiconde[pos] = pastedData.shift();
-      }
-    }
-
+    onChange(pastedData)
     this.setState({
-      pincode: newPiconde
+      pincode: pastedData
     });
 
     this.focusInput(numInputs - 1 )
-
-    //Workaround to nofify parent element with the pincode value
-    setTimeout(() => {
-      onChange(pincode)
-    }, 2)
   };
 
   handleOnChange = (e: Object) => {
